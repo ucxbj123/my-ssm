@@ -1,0 +1,53 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+
+  <!-- 启动spring-->
+  <context-param>
+    <!-- 启动spring:加载spring核心配置-->
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring-config/applicationContext.xml</param-value>
+  </context-param>
+  <!-- 启动Spring: 配置加载Spring文件的监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!-- 配置logback日志 -->
+  <context-param>
+    <!-- param-name是按照要求写的名字，否则无法正常读取logback-spring.xml文件-->
+    <param-name>logbackConfigLocation</param-name>
+    <param-value>classpath:logback-spring.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+  </listener>
+
+  <!-- 启动Spring MVC-->
+  <servlet>
+    <!-- 配置前端控制器-->
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 加载spring MVC配置文件-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring-config/spring-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+
+
