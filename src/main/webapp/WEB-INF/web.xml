@@ -3,12 +3,13 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
 
 
   <!-- 启动spring-->
   <context-param>
-    <!-- 启动spring:加载spring核心配置-->
+    <!-- 启动spring:加载spring核心配置 ,classpath:spring-config/spring-aop.xml-->
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring-config/applicationContext.xml</param-value>
   </context-param>

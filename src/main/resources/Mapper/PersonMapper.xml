@@ -4,6 +4,6 @@
 <mapper namespace="com.maven.Mapper.PersonMapper">
     <!-- Person getAllPerson();-->
     <select id="getAllPerson" resultType="person">
-        select * from person
+        select * from tb_person
     </select>
 </mapper>

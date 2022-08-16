@@ -11,6 +11,7 @@
 
     <description>spring configuration file</description>
 
+
     <!-- 读取数据库配置信息 建议加classpath，否则可能找不到对应配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties" />
 
@@ -36,7 +37,7 @@
         <!-- 注入数据源-->
         <property name="dataSource" ref="dataSource" />
         <!-- 指定mapper映射文件位置-->
-<!--        <property name="mapperLocations" value="classpath:Mapper/*.xml" />-->
+        <property name="mapperLocations" value="classpath:Mapper/*.xml" />
         <!-- 指定Mybatis核心配置文件位置-->
         <property name="configLocation" value="classpath:mybatis-config/mybatis-config.xml" />
         <!-- 引入插件 -->
@@ -56,6 +57,10 @@
     <!-- 开启Mapper接口扫描器: 扫描Dao层 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.maven.Mapper"/>
+        <!-- 通过sqlSessionFactoryBeanName的String类型加载，避免初始话mybatis时jdbc.properties未加载导致的异常
+             有多个sqlSessionFactory时就需要指明使用哪个，如果只有一个可以不
+        -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
 </beans>

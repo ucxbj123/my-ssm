@@ -3,14 +3,21 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/mvc
        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="com.maven.Controller"/>
+    <!-- 开启注解扫描-->
+    <context:component-scan base-package="com.maven"></context:component-scan>
+    <!-- 开启Aspect生成代理对象;必须配置在mvc.xml文件，因applicationContext.xml文件优先加载，寻找切入点时无法找到controller-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <mvc:annotation-driven>
         <!-- 处理响应中文内容乱码-->
         <mvc:message-converters>

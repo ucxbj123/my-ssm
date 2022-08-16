@@ -19,7 +19,7 @@
     <project.build.spring.webmvc.file.version>1.4</project.build.spring.webmvc.file.version>
     <project.build.spring.webmvc.json.version>2.9.10</project.build.spring.webmvc.json.version>
     <project.build.spring.jdbc.version>5.1.7.RELEASE</project.build.spring.jdbc.version>
-    <project.build.mybaits.version>3.5.1</project.build.mybaits.version>
+    <project.build.mybaits.version>3.5.7</project.build.mybaits.version>
     <project.build.myabtis.pagehelper.version>5.1.9</project.build.myabtis.pagehelper.version>
     <project.build.mybatis.spring.version>2.0.1</project.build.mybatis.spring.version>
     <project.build.servlet.version>4.0.1</project.build.servlet.version>
@@ -37,18 +37,18 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${project.build.spring.webmvc.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- Spring mvc:JSON -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${project.build.spring.webmvc.json.version}</version>
-      <!--            <exclusions>-->
-      <!--                <exclusion>-->
-      <!--                    <groupId>commons-logging</groupId>-->
-      <!--                    <artifactId>commons-logging</artifactId>-->
-      <!--                </exclusion>-->
-      <!--            </exclusions>-->
     </dependency>
     <!-- Spring mvc:file -->
     <dependency>
@@ -149,6 +149,31 @@
       <artifactId>jcl-over-slf4j</artifactId>
       <version>1.7.25</version>
     </dependency>
+
+    <!-- Aspects依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>aopalliance</groupId>
+      <artifactId>aopalliance</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.6.8</version>
+    </dependency>
+
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+    <!--AspectJ 结束-->
   </dependencies>
 
   <build>

@@ -8,9 +8,12 @@
     <typeAliases>
         <package name="com.maven.Dao"/>
     </typeAliases>
-
-    <mappers>
+    <plugins>
+        <!--设置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+<!--    <mappers>-->
 <!--         <mapper resource="Mapper/PersonMapper.xml"/>-->
-        <package name="Mapper"/>
-    </mappers>
+<!--&lt;!&ndash;        <package name="Mapper"/>&ndash;&gt;-->
+<!--    </mappers>-->
 </configuration>
