@@ -10,7 +10,15 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <description>spring configuration file</description>
-
+    <!-- 开启注解扫描-->
+    <context:component-scan base-package="com.maven">
+        <!-- springmvc已配置注解扫码controller,现在spring配置文件设置type=regex不扫码Controller包;是否生效未测试-->
+<!--        <context:exclude-filter type="regex" expression="com\.maven\.Controller"/>-->
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    
+<!--    <import resource="classpath:spring-config/spring-aop.xml" />-->
 
     <!-- 读取数据库配置信息 建议加classpath，否则可能找不到对应配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties" />
@@ -63,4 +71,6 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
+    <!-- 配置文件上传解析器,id是固定的-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>

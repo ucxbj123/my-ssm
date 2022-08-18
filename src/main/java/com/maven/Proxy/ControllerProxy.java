@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class PersonControllerProxy {
-    @Before(value = "execution(* com.maven.Controller.PersonController.GetPerson(..))")
+public class ControllerProxy {
+    @Before(value = "execution(* com.maven.Controller.*.*(..))")
     public void before(){
-        System.out.println("开始执行personcontroller。。。。。。。");
+        System.out.println("开始执行Controller。。。。。。。");
     }
 }

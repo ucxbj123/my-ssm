@@ -13,7 +13,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring-config/applicationContext.xml</param-value>
   </context-param>
-  <!-- 启动Spring: 配置加载Spring文件的监听器 -->
+  <!-- 启动Spring: 配置加载Spring文件的监听器，在启动时加载Spring的配置文件 -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -45,6 +45,38 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+  <!--CharacterEncodingFilter与HiddenHttpMethodFilter需要写在其他filter前面，否则其他filter会先执行导致乱码
+      filter根据配置的先后顺序执行过滤器
+  -->
+  <!-- 配置Spring的编码过滤器-->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <!-- 设置以下两个配置对请求和响应的编码都作了处理-->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- 配置处理RESTFul风格请求方式的过滤器，将POST请求转换成PUT、DELETE请求-->
+<!--  <filter>-->
+<!--    <filter-name>HiddenHttpMethodFilter</filter-name>-->
+<!--    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>-->
+<!--  </filter>-->
+<!--  <filter-mapping>-->
+<!--    <filter-name>HiddenHttpMethodFilter</filter-name>-->
+<!--    <url-pattern>/*</url-pattern>-->
+<!--  </filter-mapping>-->
 
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

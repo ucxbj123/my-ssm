@@ -1,4 +1,4 @@
-package com.maven.Dao;
+package com.maven.Bean;
 
 public class Person {
     private Integer id;

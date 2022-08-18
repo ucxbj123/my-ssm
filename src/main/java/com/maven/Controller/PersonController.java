@@ -2,7 +2,7 @@ package com.maven.Controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.maven.Dao.Person;
+import com.maven.Bean.Person;
 import com.maven.Mapper.PersonMapper;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package com.maven.Mapper;
 
-import com.maven.Dao.Person;
+import com.maven.Bean.Person;
 
 import java.util.List;
 

@@ -11,9 +11,9 @@
 	    http://www.springframework.org/schema/context/spring-context.xsd
         ">
     <!-- 开启注解扫描-->
-    <context:component-scan base-package="com.maven"></context:component-scan>
-    <!-- 开启Aspect生成代理对象-->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <context:component-scan base-package="com.maven.Proxy"></context:component-scan>
+    <!-- 开启Aspect生成代理对象 proxy-target-class="true"代表使用CGLIB动态代理-->
+    <aop:aspectj-autoproxy ></aop:aspectj-autoproxy>
     <!--4.配置AOP-->
     <!--    <aop:config>-->
     <!--        &lt;!&ndash;5.配置切入点&ndash;&gt;-->

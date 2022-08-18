@@ -6,14 +6,14 @@
 
 <configuration>
     <typeAliases>
-        <package name="com.maven.Dao"/>
+        <package name="com.maven.Bean"/>
     </typeAliases>
     <plugins>
         <!--设置分页插件-->
         <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
     </plugins>
 <!--    <mappers>-->
-<!--         <mapper resource="Mapper/PersonMapper.xml"/>-->
-<!--&lt;!&ndash;        <package name="Mapper"/>&ndash;&gt;-->
+<!--&lt;!&ndash;         <mapper resource="Mapper/PersonMapper.xml"/>&ndash;&gt;-->
+<!--        <package name="Mapper"/>-->
 <!--    </mappers>-->
 </configuration>
