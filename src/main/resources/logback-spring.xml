@@ -72,7 +72,21 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 		true：表示当前logger的appender-ref和rootLogger的appender-ref都有效
     -->
     <!--  logger -->
-    <logger name="com.maven" level="debug" />
+    <!-- 针对以下包下的日志，控制台和日志文件都使用debug级别，未进行设置的包都会输出root标签的info级别日志-->
+    <logger name="com.maven.Mapper" level="debug"  additivity="false">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="appLogAppender" />
+    </logger>
+
+    <logger name="org.mybatis" level="debug"   additivity="false">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="appLogAppender" />
+    </logger>
+    <logger name="org.apache.ibatis" level="debug"   additivity="false">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="appLogAppender" />
+    </logger>
+
     <!-- Spring framework logger -->
 <!--    <logger name="org.springframework" level="debug" additivity="false"></logger>-->
 
@@ -82,7 +96,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     root与logger是父子关系，没有特别定义则默认为root，任何一个类只会和一个logger对应，
     要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的appender和level。 
     -->
-    <root level="DEBUG">
+    <root level="info">
         <appender-ref ref="stdout" />
         <appender-ref ref="appLogAppender" />
     </root>
