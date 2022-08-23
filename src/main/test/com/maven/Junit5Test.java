@@ -1,5 +1,6 @@
 package com.maven;
 
+import com.maven.Bean.User;
 import com.maven.Mapper.PersonMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
