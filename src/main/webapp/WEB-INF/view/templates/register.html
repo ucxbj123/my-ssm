@@ -5,7 +5,9 @@
 		<title>初识Vue</title>
 		<!-- 服务器资源url-->
 		<!-- <link rel="shortcut icon" th:href="@{/static/ico/favicon.ico}"  type="img/x-icon"/> -->
+		<!-- <link rel="stylesheet" th:href="@{/bootstrap5/css/bootstrap.css}" /> -->
 		<!-- <script th:src="@{/static/vue/js/vue.js}"></script> -->
+		<!-- <script th:src="@{/bootstrap5/js/bootstrap.bundle.js}"></script> -->
 		<script src="https://cdn.staticfile.org/axios/0.18.0/axios.js"></script>
 		
 		<!-- 前端自测url-->
@@ -30,7 +32,7 @@
 				},
 				mounted(){
 					axios
-					.post('/ssm/test/two',{ce:'result'})
+					.post('/test/two',{ce:'result'})
 					.then(function(response){
 						vm.name=response.data.person.name
 						vm.id=response.data.person.id

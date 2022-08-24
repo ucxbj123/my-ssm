@@ -22,7 +22,7 @@
         4）因为web.xml配置前端控制器对/的url进行拦截，需要使用<mvc:resources>对静态资源进行url映射
     -->
     <mvc:resources mapping="/static/**" location="WEB-INF/view/static/" />
-    <mvc:resources mapping="/bootstraps/**" location="WEB-INF/view/bootstraps/" />
+    <mvc:resources mapping="/bootstrap5/**" location="WEB-INF/view/bootstrap5/" />
 
     <!-- 开启Aspect生成代理对象;必须配置在mvc.xml文件，因applicationContext.xml文件优先加载，寻找切入点时无法找到controller-->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>

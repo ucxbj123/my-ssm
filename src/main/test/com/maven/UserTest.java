@@ -1,10 +1,7 @@
 package com.maven;
 
 
-import com.alibaba.fastjson.JSONObject;
-import com.maven.Bean.User;
 import com.maven.Mapper.PersonMapper;
-import com.maven.Service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 //Spring5整合Junit4
 @RunWith(SpringJUnit4ClassRunner.class)
