@@ -1,6 +1,8 @@
 package com.maven.Mapper;
 
 import com.maven.Bean.User;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface UserMapper {
@@ -43,4 +45,9 @@ public interface UserMapper {
      * @mbg.generated Mon Aug 22 13:45:23 CST 2022
      */
     int updateByPrimaryKey(User record);
+
+    /**
+     * 根据工号jobnumber查询用户信息
+     */
+    User selectByJobnumber(@Param("jobnumber") String jobnumber);
 }

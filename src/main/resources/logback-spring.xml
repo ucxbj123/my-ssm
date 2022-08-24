@@ -86,6 +86,10 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <appender-ref ref="stdout" />
         <appender-ref ref="appLogAppender" />
     </logger>
+    <logger name="org.springframework.web" level="debug"   additivity="false">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="appLogAppender" />
+    </logger>
 
     <!-- Spring framework logger -->
 <!--    <logger name="org.springframework" level="debug" additivity="false"></logger>-->

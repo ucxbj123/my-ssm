@@ -18,4 +18,9 @@ public class UserService {
         return result;
     }
 
+    public User selectByJobnumber(String jobnumber){
+        User user=userMapper.selectByJobnumber(jobnumber);
+        return user;
+    }
+
 }

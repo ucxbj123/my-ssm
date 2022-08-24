@@ -89,4 +89,9 @@
     CreateUserID, CreateUserTime, IsLock, ExpirationTime, DeptID
     from tb_user
   </select>
+
+  <!-- User selectByJobnumber(@Param("jobnumber") String jobnumber);-->
+  <select id="selectByJobnumber" resultType="user">
+    select * from tb_user where Job_number=#{jobnumber}
+  </select>
 </mapper>

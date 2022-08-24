@@ -6,6 +6,7 @@ import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Component
@@ -111,8 +112,7 @@ public class User {
      * @mbg.generated Mon Aug 22 13:45:23 CST 2022
      * 创建时间
      */
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String createusertime;
+    private LocalDateTime createusertime;
 
     /**
      *
@@ -132,7 +132,7 @@ public class User {
      * @mbg.generated Mon Aug 22 13:45:23 CST 2022
      * 过期时间
      */
-    private Date expirationtime;
+    private LocalDateTime expirationtime;
 
     /**
      *
@@ -369,7 +369,7 @@ public class User {
      * @mbg.generated Mon Aug 22 13:45:23 CST 2022
      */
 
-    public String getCreateusertime() {
+    public LocalDateTime getCreateusertime() {
         return createusertime;
     }
 
@@ -382,7 +382,7 @@ public class User {
      * @mbg.generated Mon Aug 22 13:45:23 CST 2022
      */
 
-    public void setCreateusertime(String createusertime) {
+    public void setCreateusertime(LocalDateTime createusertime) {
         this.createusertime = createusertime;
     }
 
@@ -418,7 +418,7 @@ public class User {
      *
      * @mbg.generated Mon Aug 22 13:45:23 CST 2022
      */
-    public Date getExpirationtime() {
+    public LocalDateTime getExpirationtime() {
         return expirationtime;
     }
 
@@ -430,7 +430,7 @@ public class User {
      *
      * @mbg.generated Mon Aug 22 13:45:23 CST 2022
      */
-    public void setExpirationtime(Date expirationtime) {
+    public void setExpirationtime(LocalDateTime expirationtime) {
         this.expirationtime = expirationtime;
     }
 

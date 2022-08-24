@@ -233,6 +233,12 @@
       <artifactId>c3p0</artifactId>
       <version>0.9.2</version>
     </dependency>
+    <!-- 暂时未用到，可以注释掉-->
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.9.6</version>
+    </dependency>
   </dependencies>
 
   <build>

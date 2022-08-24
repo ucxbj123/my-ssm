@@ -15,6 +15,15 @@
     <!-- 开启MVC注解扫描-->
     <context:component-scan base-package="com.maven.Controller"/>
 
+    <!--todo 2.静态资源默认servlet配置:
+        1)加入对静态资源的处理
+        2）允许使用"/"做整体映射
+        3)配合thymeleaf使用，例如：<script th:src="@{/static/vue/js/vue.js}"></script>
+        4）因为web.xml配置前端控制器对/的url进行拦截，需要使用<mvc:resources>对静态资源进行url映射
+    -->
+    <mvc:resources mapping="/static/**" location="WEB-INF/view/static/" />
+    <mvc:resources mapping="/bootstraps/**" location="WEB-INF/view/bootstraps/" />
+
     <!-- 开启Aspect生成代理对象;必须配置在mvc.xml文件，因applicationContext.xml文件优先加载，寻找切入点时无法找到controller-->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <mvc:annotation-driven>
