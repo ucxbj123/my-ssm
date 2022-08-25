@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("test")
+@RequestMapping("/test")
 public class TestController {
 
     @Resource(name = "personMapper")
@@ -54,6 +54,11 @@ public class TestController {
     @RequestMapping("/user")
     public String touserlist(){
         return "html/userlist";
+    }
+
+    @RequestMapping("/register")
+    public String toregister(){
+        return "templates/system/register";
     }
 
 }
