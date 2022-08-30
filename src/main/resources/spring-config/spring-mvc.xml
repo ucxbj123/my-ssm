@@ -24,16 +24,20 @@
     <mvc:resources mapping="/static/**" location="WEB-INF/view/static/" />
     <mvc:resources mapping="/bootstrap5/**" location="WEB-INF/view/bootstrap5/" />
 
+    <mvc:view-controller path="/system/login" view-name="templates/system/login" />
+    <mvc:view-controller path="/system/register" view-name="templates/system/register" />
+
     <!-- 配置拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
             <!-- 拦截的url以请求的为主过滤，不会涉及到ModelAndView的url-->
+            <!-- 错误示例：<mvc:exclude-mapping path="/system/** " /> 不要在**后留空，会导致无法正常过滤url-->
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/static/**"/>
             <mvc:exclude-mapping path="/bootstrap5/**"/>
-            <mvc:exclude-mapping path="/WEB-INF/view/html/**"/>
-            <mvc:exclude-mapping path="/system/** "/>
-            <mvc:exclude-mapping path="/test/** "/>
+            <mvc:exclude-mapping path="/WEB-INF/view/templates/system/**"/>
+            <mvc:exclude-mapping path="/system/**" />
+            <mvc:exclude-mapping path="/test/**"/>
             <bean class="com.maven.Interceptor.LoginInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>

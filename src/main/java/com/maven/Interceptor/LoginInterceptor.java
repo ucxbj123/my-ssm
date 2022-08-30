@@ -31,7 +31,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         //用户未登录,拦击其请求并将其转发到用户登录页面
         logger.info("用户未登录并进行页面转发");
         logger.info("访问路径："+url);
-        request.getRequestDispatcher("/WEB-INF/view/html/login.html").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/templates/system/login.html").forward(request, response);
         return false;
     }
 
