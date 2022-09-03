@@ -1,57 +1,105 @@
 <!DOCTYPE html>
-<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>个人博客登录界面</title>
     <meta charset="utf-8">
     <!-- 配置开发的网站对移动设备友好，确保适当的绘制和触屏缩放-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" th:href="@{/static/ico/favicon.ico}"  type="img/x-icon"/>
-    <link th:href="@{/bootstrap5/css/bootstrap.css}" rel="stylesheet">
-    <script th:src="@{/bootstrap5/js/bootstrap.bundle.js}"></script>
-    <script th:src="@{/static/vue/js/vue.js}"></script>
+    <link rel="shortcut icon"  th:href="@{/static/ico/favicon.ico}"  href="../../static/ico/favicon.ico"  type="img/x-icon"/>
+    <link th:href="@{/bootstrap5/css/bootstrap.css}" 	href="../../bootstrap5/css/bootstrap.css"	rel="stylesheet">
+    <script th:src="@{/bootstrap5/js/bootstrap.bundle.js}"	src="../../bootstrap5/js/bootstrap.bundle.js"	></script>
+    <script th:src="@{/static/vue/js/vue.js}"	src="../../static/vue/js/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.js"	th:src="@{//cdn.staticfile.org/jquery/1.10.2/jquery.min.js}"></script>
 
-    <!-- 前端自测url-->
-<!--    <link rel="shortcut icon" href="../static/ico/favicon.ico"  type="img/x-icon"/>-->
-<!--    <link rel="stylesheet" href="../bootstrap5/css/bootstrap.css" />-->
-<!--    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>-->
-<!--     <script src="../static/vue/js/vue.js"></script>-->
-<!--     <script src="../bootstrap5/js/bootstrap.bundle.js"></script>-->
+	<script type="text/javascript" th:inline="javascript">
+	$(function(){
+		//点击图片切换验证码
+		$("#vcodeImg").click(function(){
+			//thymeleaf获取项目路径
+			// var contextPath = [[@{/}]]
+			var contextPath = /*[[@{/}]]*/
+			this.src = contextPath+"system/getVerifiCodeImage?t=" + new Date().getTime();
+			// alert(contextPath)
+		});
+		$("#loginsubmit").click(function(){
+			//项目路径
+			var contextPath = [[@{/}]];
+			var jobnumber = $("#jobNumber").val();
+			var password = $("#inputPassword").val();
+			var verifiCode = $("#verifiCode").val();
+			var usertype = $("#selectuser").val();
+			var json = {
+				"jobNumber":jobnumber,
+				"password":password,
+				"usertype":usertype,
+				"verifiCode":verifiCode,
+			}
+			data = JSON.stringify(json);//将数据转化为json格式
+			$.ajax({
+				url:contextPath+"system/loginform",
+				data:json,
+				method:"post",
+				dataType:"json",//预期返回的数据
+				// contentType:'application/json',	//设置json类型数据会以body形式提交数据，如不是json数据则可以表单形式提交
+				success:function(r){
+					var result = JSON.stringify(r);
+					alert(result)
+					// if ($.trim(result.status) == "success") {
+					// 	$(window).attr('location',contextPath+"main");
+					// } else{
+					// 	alert(result.status+"用户名、密码或者验证码错误")
+					// }
+				}
+			})
+			
+		})
+	})
+	</script>
 </head>
-<body>
+<body th:style="'background-image: url('+@{/static/image/background.png}+');'"	style="background-image: url(../../static/image/background.png);">
 
-<div class="container-fluid text-center" id="app">
+<div class="container-fluid text-center" id="app" >
     <div class="row">
         <div class="col-7">
-            <h1>我的第一个 Bootstrap 页面</h1>
+            
         </div>
         <div id="loginform" class="col-3  offset-1 border-0 px-4 py-2" style="margin-top: 10%;">
-            <form class="row  text-center row-cols-1">
+            <!-- <form class="row  text-center row-cols-1" method="post" th:action="@{/system/loginform}"> -->
+			<div class="row  text-center row-cols-1" >
                 <div class="col p-2">
                     <div class="row">
                         <span class="col-2"><b>登录</b></span>
-                        <span class="col-6 offset-4">没有账号？<a th:href="@{/system/register}">点此注册</a></span>
+                        <span class="col-6 offset-4">没有账号？<a th:href="@{/system/register}" href="#">点此注册</a></span>
                     </div>
                 </div>
                 <div class="col px-2" >
-                    <select id="selectuser" style="width: 100%;" class="form-control">
-                        <option value="-1">请选择</option>
-                        <option value="2">General users</option>
-                        <option value="3">admin</option>
+                    <select id="selectuser" style="width: 100%;" class="form-control" name="usertype">
+                        <option value="-1" selected>请选择</option>
+                        <option value="0" >General users</option>
+                        <option value="1">admin</option>
                     </select>
                     <!-- <button type="button" id="button1">测试</button> -->
                 </div>
                 <div class="col p-2">
-                    <label for="username" class="visually-hidden">Email</label>
-                    <input type="text"  class="form-control " id="username" placeholder="账号" style="width: 100%;" value="396012">
+                    <label for="username" class="visually-hidden">账号</label>
+                    <input type="text"  class="form-control " id="jobNumber" placeholder="账号" style="width: 100%;" name="jobNumber">
                 </div>
                 <div class="col p-2">
                     <label for="inputPassword" class="visually-hidden">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="密码" style="width: 100%;" value="1234">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="密码" style="width: 100%;" name="password">
                 </div>
+				<div class="col p-2">
+					<div class="row">
+						<input id="verifiCode" class="form-control col-5 mx-lg-3" name="verifiCode" type="text" placeholder="验证码" style="width: 50%;">
+						<img title="点击图片切换验证码哟 ~" id="vcodeImg"  class="col-4 offset-1"  th:src="@{/system/getVerifiCodeImage}" alt="#">
+					</div>
+				</div>
                 <div class="col p-2">
-                    <button type="submit" class="btn btn-primary mb-3 " style="width: 100%;">login</button>
+                    <!-- <button type="submit" class="btn btn-primary mb-3 " style="width: 100%;">login</button> -->
+					<button id="loginsubmit" type="button"	 class="btn btn-primary mb-3 " style="width: 100%;">login</button>
                 </div>
-            </form>
+            <!-- </form> -->
+			</div>
         </div>
     </div>
 
@@ -62,23 +110,5 @@
 <script type="text/javascript">
 
     Vue.config.productionTip=false //设置为 false 以阻止 vue 在启动时生成生产提示
-
-    const vm=new Vue({
-        el:'#app',
-        data:{
-            status:'false'
-        },
-        // mounted(){
-        //     axios
-        //         .post('/user/adduser',{"name":"谢秉均","jobNumber":$("#username").val(),"password":$("#inputPassword").val()})
-        //         .then(function(response){
-        //             vm.status=response.data.status
-        //             alert('result:'+this.status)
-        //         })
-        //         .catch(function(error){
-        //             console.log(error)
-        //         })
-        // }
-    })
 </script>
 </html>

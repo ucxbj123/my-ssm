@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon"  th:href="@{/static/ico/favicon.ico}"  href="../../static/ico/favicon.ico"  type="img/x-icon"/>
+    <link th:href="@{/bootstrap5/css/bootstrap.css}" 	href="../../bootstrap5/css/bootstrap.css"	rel="stylesheet">
+    <script th:src="@{/bootstrap5/js/bootstrap.bundle.js}"	src="../../bootstrap5/js/bootstrap.bundle.js"	></script>
+    <script th:src="@{/static/vue/js/vue.js}"	src="../../static/vue/js/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"	th:src="@{//cdn.staticfile.org/jquery/1.10.2/jquery.min.js}"></script>
+
+</head>
+<body>
+<h1 >欢迎<span th:text="${session.userinfo.name}"></span>登录主页面</h1>
+</body>
+</html>

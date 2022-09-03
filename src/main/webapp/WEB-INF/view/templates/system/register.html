@@ -5,17 +5,31 @@
 	<meta charset="utf-8">
 	<!-- 配置开发的网站对移动设备友好，确保适当的绘制和触屏缩放-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="../../static/ico/favicon.ico"  type="img/x-icon"/>
-	<link th:href="@{/bootstrap5/css/bootstrap.css}" rel="stylesheet">
-	<script th:src="@{/bootstrap5/js/bootstrap.bundle.js}"></script>
-	<script th:src="@{/static/vue/js/vue.js}"></script>
+	<link rel="shortcut icon"  th:href="@{/static/ico/favicon.ico}"  href="../../static/ico/favicon.ico"  type="img/x-icon"/>
+	<link th:href="@{/bootstrap5/css/bootstrap.css}" 	href="../../bootstrap5/css/bootstrap.css"	rel="stylesheet">
+	<script th:src="@{/bootstrap5/js/bootstrap.bundle.js}"	src="../../bootstrap5/js/bootstrap.bundle.js"	></script>
+	<script th:src="@{/static/vue/js/vue.js}"	src="../../static/vue/js/vue.js"></script>
 
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"	th:src="@{//cdn.staticfile.org/jquery/1.10.2/jquery.min.js}"></script>
 	<!-- 前端自测url-->
 <!--	    <link rel="stylesheet" href="../../bootstrap5/css/bootstrap.css" />-->
 <!--		<script src="../../static/vue/js/vue.js"></script>-->
 <!--		<script src="../../bootstrap5/js/bootstrap.bundle.js"></script>-->
+		
+	<script type="text/javascript" th:inline="javascript">
+	$(function(){
+		//点击图片切换验证码
+		$("#vcodeImg").click(function(){
+			//thymeleaf获取项目路径
+			var contextPath = [[@{/}]]
+			//var contextPath = /*[[@{/}]]*/
+			this.src = contextPath+"system/getVerifiCodeImage?t=" + new Date().getTime();
+			// alert(contextPath)
+		})
+	})
+	</script>
 </head>
-<body th:style="'background-image: url('+@{/static/image/background.png}+');'">
+<body th:style="'background-image: url('+@{/static/image/background.png}+');'" style="background-image: url(../../static/image/background.png);">
 
 <div class="container-fluid text-center" id="app">
 	<div class="row text-center">
@@ -30,7 +44,7 @@
 					<select id="selectuser" style="width: 100%;" class="form-control" name="issuperadmin">
 						<option value="-1">请选择</option>
 						<option value="2">General users</option>
-						<option value="3">admin</option>
+<!--						<option value="3">admin</option>-->
 					</select>
 					<!-- <button type="button" id="button1">测试</button> -->
 				</div>
@@ -46,6 +60,12 @@
 					<input type="password" class="form-control" id="inputPassword" placeholder="密码" style="width: 100%;" name="password">
 				</div>
 				<div class="col p-2">
+					<div class="row">
+						<input id="verifiCode" class="form-control col-5 mx-lg-3" name="verifiCode" type="text" placeholder="验证码" style="width: 50%;">
+						<img title="点击图片切换验证码哟 ~" id="vcodeImg"  class="col-4 offset-1"  th:src="@{/system/getVerifiCodeImage}" alt="#">
+					</div>
+				</div>
+				<div class="col p-2">
 					<button type="submit" class="btn btn-primary mb-3 " style="width: 100%;">注册</button>
 				</div>
 			</form>
@@ -59,6 +79,5 @@
 <script type="text/javascript">
 
 	Vue.config.productionTip=false //设置为 false 以阻止 vue 在启动时生成生产提示
-
 </script>
 </html>

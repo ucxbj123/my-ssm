@@ -26,6 +26,7 @@
 
     <mvc:view-controller path="/system/login" view-name="templates/system/login" />
     <mvc:view-controller path="/system/register" view-name="templates/system/register" />
+    <mvc:view-controller path="/main" view-name="templates/MainModule/main" />
 
     <!-- 配置拦截器-->
     <mvc:interceptors>

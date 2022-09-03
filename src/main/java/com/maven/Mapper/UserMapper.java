@@ -50,4 +50,10 @@ public interface UserMapper {
      * 根据工号jobnumber查询用户信息
      */
     User selectByJobnumber(@Param("jobnumber") String jobnumber);
+
+    /**
+     * 根据工号和密码验证是否正确，用于登录验证
+     * @return
+     */
+    List<User> selectByJobAndPassword(@Param("jobnumber") String jobnumber,@Param("password")String password);
 }

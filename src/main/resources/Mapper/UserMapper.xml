@@ -94,4 +94,9 @@
   <select id="selectByJobnumber" resultType="user">
     select * from tb_user where Job_number=#{jobnumber}
   </select>
+  
+  <!--List<User> selectByJobAndName(@Param("jobnumber") String jobnumber,@Param("password")String password);-->
+  <select id="selectByJobAndPassword" resultMap="BaseResultMap">
+    select * from tb_user where Job_number = #{jobnumber}  and Password = #{password}
+  </select>
 </mapper>

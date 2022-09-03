@@ -3,13 +3,11 @@ package com.maven.Controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.maven.Bean.Person;
+import com.maven.Dto.LoginFormMessage;
 import com.maven.Mapper.PersonMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -59,6 +57,14 @@ public class TestController {
     @RequestMapping("/register")
     public String toregister(){
         return "templates/system/register";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/json",method = RequestMethod.POST)
+    public Map TsetJson( LoginFormMessage message){
+        System.out.println(message);
+        result.put("status","成功了");
+        return result;
     }
 
 }
